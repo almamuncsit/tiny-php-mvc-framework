@@ -1,5 +1,5 @@
 <?php
-class Welcome extends CJ_Model {
+class WelcomeModel extends CJ_Model {
 
     function __construct() {
         parent::__construct();

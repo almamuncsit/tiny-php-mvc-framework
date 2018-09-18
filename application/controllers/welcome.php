@@ -2,16 +2,16 @@
 
 class Welcome extends MY_Controller
 {
-    private $m_welcome;
+    private $welcomeModel;
 
     public function __construct() {
         parent::__construct();
-        $this->m_welcome = $this->render->model('Welcome');
+        $this->welcomeModel = $this->render->model('WelcomeModel');
     }
 
     public function index() {
-        $hello = $this->m_welcome->hello();
-        $this->loadView('index', ['hello' => hello]);
+        $hello = $this->welcomeModel->hello();
+        $this->loadView('index', ['hello' => $hello]);
     }
 
 }

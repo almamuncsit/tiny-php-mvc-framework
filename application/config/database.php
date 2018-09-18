@@ -9,8 +9,8 @@
 
 define('HOST_NAME',     'localhost');
 define('USER_NAME',     'root');
-define('PASSWORD',      '');
-define('DATABASE_NAME', '');
+define('PASSWORD',      'root');
+define('DATABASE_NAME', 'tiny');
 define('DATABASE',      'mysql');
 
 

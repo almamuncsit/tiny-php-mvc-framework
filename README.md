@@ -2,6 +2,44 @@
 
 This is a very small php mvc framework. This will be helpfull if someone want to know how to implement mvc without framework or want to create own framework. It's bootstrap point is index.php page. It have three folder application, manager and public. Manager folder contain core component of this framework. Application folder cantain models, views, controller, configs and some others. And Public folder is to contain site's assets like css, js, image and others files. 
 
+# Installation
+
+> Create a directory on html/htdocs folder and clone or download this repository.
+
+```bash
+    mkdir test
+    cd test
+    git clone https://github.com/almamuncsit/tiny-php-mvc-framework.git .
+```
+
+### Configure Database on 
+
+> application/config/database.php
+
+```php
+    define('HOST_NAME',     'localhost');
+    define('USER_NAME',     'root');
+    define('PASSWORD',      'root');
+    define('DATABASE_NAME', 'tiny');
+    define('DATABASE',      'test');
+```
+
+### Configure site information on
+
+> application/config/config.php
+
+```php
+define('DEVELOPMENT_ENVIRONMENT',   TRUE) // Define your work environment true or flase
+define('BASE_URL',                  'http://localhost/test/admin/');
+define('SITE_URL',                  'http://localhost/test/');
+define('SITE_NAME',                 'CenaJana');
+define("DEFAULT_CONTROLLER",        'Welcome');
+define("DEFAULT_METHOD",            'index');
+define('URL_EXTENTION',             '');
+```
+
+Now run http://localhost/test
+
 ## Model have acces following functions to make database query
 
 ```php
@@ -10,7 +48,8 @@ This is a very small php mvc framework. This will be helpfull if someone want to
     public function setLimit($ofset, $limit)
     public function join()
 ```
-### Select From Table 
+
+### Select From Table
 
 ```php
     public function selectAll()
@@ -23,6 +62,7 @@ This is a very small php mvc framework. This will be helpfull if someone want to
     public function selectSum()
     public function selectAvg()
 ```
+
 ### Insert into table
 
 ```php
@@ -159,6 +199,7 @@ $this->render->model('Welcome')
 ```
 
 ### Creating forms
+
 ```php
     start($action = NULL, $data = NULL, $method = 'POST', $class = 'form-horizontal')
     end()
@@ -174,6 +215,7 @@ $this->render->model('Welcome')
 
 
 # An example
+
 ### Controller 
 
 application/controllers/welcome.php
@@ -185,7 +227,7 @@ application/controllers/welcome.php
 
         public function __construct() {
             parent::__construct();
-            $this->welcomeModel = $this->render->model('Welcome');
+            $this->welcomeModel = $this->render->model('WelcomeModel');
         }
 
         public function index() {
@@ -198,10 +240,10 @@ application/controllers/welcome.php
 
 ### Model
 
-application/models/Welcome.php
+application/models/WelcomeModel.php
 
 ```php
-    class Welcome extends CJ_Model {
+    class WelcomeModel extends CJ_Model {
 
         function __construct() {
             parent::__construct();
@@ -229,7 +271,7 @@ application/views/index.php
     </head>
     <body>
 
-    <h1> <?php echo $hello ?> </h1>
+        <h1> <?php echo $hello ?> </h1>
         
     </body>
     </html>
