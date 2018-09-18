@@ -5,38 +5,118 @@ This is a very small php mvc framework. This will be helpfull if someone want to
 ## Model have acces following functions to make database query
 
 ```
-    public function setTable($table); //
-    public function setWhere($oparends, $oparetor); //
-    public function setLimit($ofset, $limit);
-    public function join();
+    public function setTable($table)
+    public function setWhere($oparends, $oparetor)
+    public function setLimit($ofset, $limit)
+    public function join()
+```
+### Select From Table 
 
-     Select From Table 
+```
+    public function selectAll()
+    public function selectOne($ID)
+    public function selectMulti($fields)
+    public function numRow()
+    public function numCol()
+    public function selectMax()
+    public function selectMin()
+    public function selectSum()
+    public function selectAvg()
+```
+### Insert into table
 
-    public function selectAll(); //
-    public function selectOne($ID); //
-    public function selectMulti($fields);
-    public function numRow(); //
-    public function numCol();
-    public function selectMax();
-    public function selectMin();
-    public function selectSum();
-    public function selectAvg();
+```
+    public function insert(array $data, $table = NULL)
+```
 
-    Insert into table
+### Update data
 
-    public function insert(array $data, $table = NULL); //
+```
+    public function update(array $data, $ID)
+```
 
-    Update data
+### Delete data
 
-    public function update(array $data, $ID);
+```
+    public function deleteAll()
+    public function delete($ID)
+```
 
-    Delete data
+### Resect Model
+
+```
+    public function reset()
+```
+
+## Creating model object on controller
+
+```
+$this->render->model('Welcome')
+```
+
+## Loading view
+```
+$this->loadView('index', ['hello' => hello]);
+```
+
+## And example
+### Controller 
+
+application/controllers/welcome.php
+
+```
+class Welcome extends CJ_Controller
+{
+    private $welcomeModel;
+
+    public function __construct() {
+        parent::__construct();
+        $this->welcomeModel = $this->render->model('Welcome');
+    }
+
+    public function index() {
+        $hello = $this->welcomeModel->hello();
+        $this->loadView('index', ['hello' => hello]);
+    }
+
+}
+```
+
+### Model 
+
+application/models/Welcome.php
+
+```
+class Welcome extends CJ_Model {
+
+    function __construct() {
+        parent::__construct();
+        // $this->setTable('table_name');
+    }
     
-    public function deleteAll(); 
-    public function delete($ID); 
+    public function hello() {
+        return 'Welcome to Bangladesh';
+    }
+}
+```
 
-    Resect Model
+### View 
 
-    public function reset(); 
+application/views/index.php
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h1> <?php echo $hello ?> </h1>
     
-    ```
+</body>
+</html>
+```
