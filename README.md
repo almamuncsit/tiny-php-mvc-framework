@@ -20,11 +20,11 @@ This is a very small php mvc framework. This will be helpfull if someone want to
     define('HOST_NAME',     'localhost');
     define('USER_NAME',     'root');
     define('PASSWORD',      'root');
-    define('DATABASE_NAME', 'tiny');
-    define('DATABASE',      'test');
+    define('DATABASE_NAME', 'test');
+    define('DATABASE',      'mysql');
 ```
 
-### Configure site information on
+### Configure site's information on
 
 > application/config/config.php
 
@@ -82,7 +82,7 @@ Now run http://localhost/test
     public function delete($ID)
 ```
 
-### Resect Model
+### Reset Model
 
 ```php
     public function reset()
@@ -91,7 +91,7 @@ Now run http://localhost/test
 ## Creating model object on controller
 
 ```php
-$this->render->model('Welcome')
+    $this->render->model('Welcome')
 ```
 
 ## Loading view
@@ -100,8 +100,7 @@ $this->render->model('Welcome')
     $this->loadView('index', ['hello' => hello]);
 ```
 
-
-## Global funcions 
+## Global funcions
 
 ```php
     redirect($url, $statusCode = 303)
@@ -109,7 +108,7 @@ $this->render->model('Welcome')
     base_url()
 ```
 
-## Receiving Data from form on controller
+## Receiving data from form on controller
 
 ```php
     $this->input->post($key , $html = FALSE)
@@ -153,7 +152,7 @@ $this->render->model('Welcome')
     destroy ()
 ```
 
-### File upload
+### File uploading
 
 ```php
     name() // Return name
